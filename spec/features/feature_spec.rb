@@ -9,10 +9,15 @@ feature App do
     expect(page.status_code).to eq(200)
   end
 
-
   scenario "logging into links page gives list of bookmarks" do
     visit '/links'
     expect(page).to have_content("Example Page")
     expect(page).to have_content("http://example.com")
+  end
+
+  scenario "go to create new bookmark page from links" do
+    visit '/links'
+    click_button("Create New Bookmark")
+    expect(current_path).to eq('/links/new')
   end
 end

@@ -3,8 +3,10 @@ require './app/helpers/dm_config'
 
 class App < Sinatra::Base
 
+  ENV['RACK_ENV'] = 'development'
+
   get '/' do
-    "Bookmark Manager Extraordinaire"
+    "Bookmarker Extraordinaire"
   end
 
   get '/links' do
