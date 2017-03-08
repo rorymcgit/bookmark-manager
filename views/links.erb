@@ -1,5 +1,11 @@
 <html>
-  <% @links.each do |link| %>
-    <div><%= "#{link.title}: #{link.url}" %></div>
-  <% end %>
+  <ul>
+    <% @links.each do |link| %>
+      <li>
+        <div><b>Title:</b>  <%= link.title %></div>
+        <div><b>URL:</b>    <%= link.url %></div>
+        <p></p>
+      </li>
+    <% end %>
+  </ul>
 </html>
