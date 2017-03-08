@@ -6,7 +6,6 @@ class App < Sinatra::Base
   ENV['RACK_ENV'] = 'development'
 
   get '/' do
-    "Bookmarker Extraordinaire"
     erb(:index)
   end
 
