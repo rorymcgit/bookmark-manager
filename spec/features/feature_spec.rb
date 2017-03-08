@@ -6,7 +6,8 @@ feature App do
 
   scenario "expect homepage to return 200" do
     visit '/'
-    expect(page.status_code).to eq(200)
+    click_button('View bookmarks')
+    expect(current_path).to eq('/links')
   end
 
   scenario "logging into links page gives list of bookmarks" do

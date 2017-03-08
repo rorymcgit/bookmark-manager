@@ -7,6 +7,7 @@ class App < Sinatra::Base
 
   get '/' do
     "Bookmarker Extraordinaire"
+    erb(:index)
   end
 
   get '/links' do
