@@ -1,6 +1,8 @@
 feature App do
 
-  Link.create(title: "Example Page", url: "http://example.com")
+  before do
+    Link.create(title: "Example Page", url: "http://example.com")
+  end
 
   scenario "expect homepage to return 200" do
     visit '/'

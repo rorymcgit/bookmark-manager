@@ -5,7 +5,8 @@ feature App do
     link_name = "New link"
     fill_in :url, with: link_url
     fill_in :name, with: link_name
-    click_button("Save")
+    click_button("Save Bookmark")
+    expect(current_path).to eq '/links'
     expect(page).to have_content("#{link_url}")
     expect(page).to have_content("#{link_name}")
   end

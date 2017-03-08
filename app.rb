@@ -13,7 +13,7 @@ class App < Sinatra::Base
   end
 
   get '/links/new' do
-    erb(:new)
+    erb(:'links/new')
   end
 
   post '/links' do
