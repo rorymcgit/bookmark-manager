@@ -1,5 +1,5 @@
 <html>
-  <% Link.all.each do |link| %>
+  <% @links.each do |link| %>
     <div><%= "#{link.title}: #{link.url}" %></div>
   <% end %>
 </html>
