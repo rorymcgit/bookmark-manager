@@ -8,9 +8,7 @@ class App < Sinatra::Base
   end
 
   get '/links' do
-    arr = []
-    Link.all.each { |u| arr << u.url }
-    arr.join(", ")
+    erb(:links)
   end
 
 end
