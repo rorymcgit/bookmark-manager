@@ -28,8 +28,18 @@ class App < Sinatra::Base
   end
 
   get '/tags/:given_tag' do
-    tag = Tag.first(tag: params[:given_tag])
-    @links = tag ? tag.links : []
+    @links = []
+    Tag.all.each do |tag|
+      if tag.links.tags[0].tag == params[:given_tag]
+        @links << tag.links
+      end
+    end
+    @links.flatten!
+
+
+    # ONLY FILTERS FIRST TAG, AS tag BECOMES FIRST ITEM IN COLLECTION
+    # tag = Tag.first(tag: params[:given_tag])
+    # @links = tag ? tag.links : []
     erb(:links)
   end
 

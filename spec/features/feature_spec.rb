@@ -3,6 +3,7 @@ feature "navigating" do
   before(:each) do
     Link.create(title: "Example Page", url: "http://example.com", tags: [Tag.create(tag: "example_tag")])
     Link.create(title: "Bubble website", url: "www.bubbles.com", tags: [Tag.create(tag: "bubbles")])
+    Link.create(title: "More bubbles", url: "www.mo_betta_bubbles.com", tags: [Tag.create(tag: "bubbles")])
   end
 
   scenario "expect homepage to return 200" do
@@ -27,5 +28,6 @@ feature "navigating" do
     visit '/tags/bubbles'
     expect(page).not_to have_content("http://example.com")
     expect(page).to have_content("www.bubbles.com")
+    expect(page).to have_content("www.mo_betta_bubbles.com")
   end
 end
