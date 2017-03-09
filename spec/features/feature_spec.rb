@@ -1,7 +1,8 @@
-feature App do
+feature "navigating" do
 
-  before do
-    Link.create(title: "Example Page", url: "http://example.com")
+  before(:each) do
+    Link.create(title: "Example Page", url: "http://example.com", tags: [Tag.create(tag: "example_tag")])
+    Link.create(title: "Bubble website", url: "www.bubbles.com", tags: [Tag.create(tag: "bubbles")])
   end
 
   scenario "expect homepage to return 200" do
@@ -20,5 +21,11 @@ feature App do
     visit '/links'
     click_button("Create New Bookmark")
     expect(current_path).to eq('/links/new')
+  end
+
+  scenario "filters links by tag" do
+    visit '/tags/bubbles'
+    expect(page).not_to have_content("http://example.com")
+    expect(page).to have_content("www.bubbles.com")
   end
 end

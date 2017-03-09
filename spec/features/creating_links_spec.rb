@@ -1,4 +1,4 @@
-feature App do
+feature "creating links" do
   scenario "saves user input (to link database) and shows it on links page" do
     enter_link_and_url
     click_button("Save Bookmark")
