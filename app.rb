@@ -11,6 +11,7 @@ class App < Sinatra::Base
 
   get '/links' do
     @links = Link.all
+    @tags = Tag.all
     erb(:links)
   end
 
@@ -19,7 +20,10 @@ class App < Sinatra::Base
   end
 
   post '/links' do
-    Link.create(title: params[:name], url: params[:url])
+    link = Link.create(title: params[:name], url: params[:url])
+    tag = Tag.new(tag: params[:tag])
+    link.tags << tag
+    link.save
     redirect('/links')
   end
 

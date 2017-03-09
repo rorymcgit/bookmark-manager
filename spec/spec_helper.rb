@@ -4,8 +4,9 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require './app'
-require_relative '../app/helpers/dm_config'
 require 'database_cleaner'
+require_relative '../app/helpers/dm_config'
+require_relative './features/web_helpers'
 
 Capybara.app = App
 

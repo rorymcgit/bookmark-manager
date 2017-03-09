@@ -2,9 +2,11 @@
   <ul>
     <% @links.each do |link| %>
       <li>
-        <div><b>Title:</b>  <%= link.title %></div>
-        <div><b>URL:</b>    <%= link.url %></div>
-        <p></p>
+        <p>
+          <div><b>Title: </b><%= link.title %></div>
+          <div><b>URL:   </b><%= link.url %></div>
+          <div><b>TAG:   </b><%  link.tags.each { |tag| %><%= tag.tag %><% } %></div>
+        </p>
       </li>
     <% end %>
   </ul>
