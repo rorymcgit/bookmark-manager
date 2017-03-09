@@ -24,10 +24,20 @@ feature "navigating" do
     expect(current_path).to eq('/links/new')
   end
 
-  scenario "filters links by tag" do
-    visit '/tags/bubbles'
-    expect(page).not_to have_content("http://example.com")
-    expect(page).to have_content("www.bubbles.com")
-    expect(page).to have_content("www.mo_betta_bubbles.com")
+  context "tag filtering" do
+    scenario "filters links by tag" do
+      visit '/tags/bubbles'
+      expect(page).not_to have_content("http://example.com")
+      expect(page).to have_content("www.bubbles.com")
+      expect(page).to have_content("www.mo_betta_bubbles.com")
+    end
+
+    scenario "remove filters" do
+      visit '/tags/bubbles'
+      click_button('Remove Filters')
+      expect(page).to have_content("http://example.com")
+      expect(page).to have_content("www.bubbles.com")
+      expect(page).to have_content("www.mo_betta_bubbles.com")
+    end
   end
 end
