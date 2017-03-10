@@ -7,9 +7,12 @@ def enter_link_and_url
 end
 
 
-def sign_up
+def sign_up(email: "bernard@malhame.com",
+            password: "great_password",
+            password_confirmation: "great_password")
   visit '/'
-  fill_in :email, with: "bernard@malhame.com"
-  fill_in :password, with: "great_password"
+  fill_in :email, with: email
+  fill_in :password, with: password
+  fill_in :password_confirmation, with: password_confirmation
   click_button("Sign Up")
 end
