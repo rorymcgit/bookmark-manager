@@ -5,6 +5,9 @@ require './app/helpers/dm_config'
 
 class App < Sinatra::Base
 
+  enable :sessions
+  set :session_secret, 'super secret'
+
   get '/' do
     erb(:index)
   end
@@ -21,8 +24,9 @@ class App < Sinatra::Base
 
   post '/links' do
     link = Link.new(title: params[:name], url: params[:url])
-    tag = Tag.first_or_create(tag: params[:tag])
-    link.tags << tag
+    params[:tag].split.each do |tag|
+      link.tags << Tag.first_or_create(tag: tag)
+    end
     link.save
     redirect('/links')
   end
@@ -40,6 +44,18 @@ class App < Sinatra::Base
     # tag = Tag.first(tag: params[:given_tag])
     # @links = tag ? tag.links : []
     erb(:links)
+  end
+
+  post '/users' do
+    user = User.create(email: params[:email], password: params[:password])
+    session[:user_id] = user.id
+    redirect('/links')
+  end
+
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
   end
 
 end
