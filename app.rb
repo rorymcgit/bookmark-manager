@@ -1,6 +1,7 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require './app/helpers/dm_config'
 
 class App < Sinatra::Base
@@ -8,7 +9,10 @@ class App < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
 
+  register Sinatra::Flash
+
   get '/' do
+    @user = User.new
     erb(:index)
   end
 
@@ -46,12 +50,17 @@ class App < Sinatra::Base
     erb(:links)
   end
 
-  post '/users' do
-    user = User.create( email: params[:email],
-                        password: params[:password],
-                        password_confirmation: params[:password_confirmation])
-    session[:user_id] = user.id
-    redirect('/links')
+  post '/' do
+    @user = User.new( email: params[:email],
+                      password: params[:password],
+                      password_confirmation: params[:password_confirmation])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect('/links')
+    else
+      flash.now[:notice] = "Password and confirmation password do not match"
+      erb(:index)
+    end
   end
 
   helpers do
