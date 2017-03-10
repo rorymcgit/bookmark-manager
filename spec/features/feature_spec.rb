@@ -27,9 +27,11 @@ feature "navigating" do
   context "tag filtering" do
     scenario "filters links by tag" do
       visit '/tags/bubbles'
-      expect(page).not_to have_content("http://example.com")
-      expect(page).to have_content("www.bubbles.com")
-      expect(page).to have_content("www.mo_betta_bubbles.com")
+      within "ul#links" do
+        expect(page).not_to have_content("Example Page")
+        expect(page).to have_content("Bubble website")
+        expect(page).to have_content("More bubbles")
+      end
     end
 
     scenario "remove filters" do

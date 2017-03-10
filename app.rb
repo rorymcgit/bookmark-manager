@@ -1,9 +1,9 @@
+ENV['RACK_ENV'] ||= 'development'
+
 require 'sinatra/base'
 require './app/helpers/dm_config'
 
 class App < Sinatra::Base
-
-  ENV['RACK_ENV'] = 'development'
 
   get '/' do
     erb(:index)
@@ -20,8 +20,8 @@ class App < Sinatra::Base
   end
 
   post '/links' do
-    link = Link.create(title: params[:name], url: params[:url])
-    tag = Tag.new(tag: params[:tag])
+    link = Link.new(title: params[:name], url: params[:url])
+    tag = Tag.first_or_create(tag: params[:tag])
     link.tags << tag
     link.save
     redirect('/links')
