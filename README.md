@@ -3,7 +3,7 @@
 A website which allows a user to create an account for storing URLs of favourite sites with tags. This was written over the course of my fourth week at Makers Academy.
 
 
-Instructions for use:
+#### Instructions for use:
 - Clone this repo
 - Run ```bundle``` to install dependencies
 - Run ```rspec``` to view tests
@@ -16,7 +16,7 @@ $ createdb bookmark_manager_test
 - Run ```rackup``` to auto-upgrade and start server
 - In your browser, visit http://localhost:9292/
 
-Technologies used:
+#### Technologies used:
 - Ruby
 - RSpec
 - Sinatra
