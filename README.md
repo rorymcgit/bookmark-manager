@@ -25,7 +25,7 @@ Technologies used:
 - PostgreSQL (a relational DBMS)
 
 
-##User stories
+## User stories
 ```
 As a web surfer,
 So that I can visit interesting pages,
