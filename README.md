@@ -13,7 +13,7 @@ Instructions for use:
 $ createdb bookmark_manager_test
 ```
 - Run ```rackup``` to auto-upgrade and start server
-- In your browser, visit http://localhost:9292
+- In your browser, visit http://localhost:9292/
 
 Technologies used:
 - Ruby
