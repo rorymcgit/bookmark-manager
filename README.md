@@ -7,7 +7,7 @@ Instructions for use:
 - Clone this repo
 - Run ```bundle``` to install dependencies
 - Run ```rspec``` to view tests
-- If you don't already have PostgreSQLql ```brew install postgresql```
+- If you don't already have PostgreSQL ```brew install postgresql```
 - To create databases:
 ```
 $ createdb bookmark_manager_development
@@ -26,7 +26,7 @@ Technologies used:
 
 
 ##User stories
-
+```
 As a web surfer,
 So that I can visit interesting pages,
 I want to see a list of links.
@@ -38,3 +38,4 @@ I would like to add to the list of links.
 As a web surfer,
 So that I can keep links organised,
 I want to be able to tag my links.
+```
