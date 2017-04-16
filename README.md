@@ -9,7 +9,8 @@ Instructions for use:
 - Run ```rspec``` to view tests
 - If you don't already have PostgreSQLql ```brew install postgresql```
 - To create databases:
-```$ createdb bookmark_manager_development
+```
+$ createdb bookmark_manager_development
 $ createdb bookmark_manager_test
 ```
 - Run ```rackup``` to auto-upgrade and start server
