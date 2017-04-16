@@ -43,10 +43,6 @@ class App < Sinatra::Base
       end
     end
     @links.flatten!
-
-    # ONLY FILTERS FIRST TAG, AS tag BECOMES FIRST ITEM IN COLLECTION
-    # tag = Tag.first(tag: params[:given_tag])
-    # @links = tag ? tag.links : []
     erb(:links)
   end
 
